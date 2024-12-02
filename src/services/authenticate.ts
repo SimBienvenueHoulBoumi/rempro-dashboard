@@ -20,10 +20,10 @@ export const login = async ({ username, password }: LoginType) => {
       const errorMessage = await response.text(); // Récupérer l'erreur du serveur
       throw new Error(errorMessage || "Login failed");
     }
+    
     // Si l'authentification réussit, on ne fait rien de spécial ici
   } catch (error) {
-    console.error("An error occurred during login:", error);
-    throw error; // Propager l'erreur pour qu'elle soit capturée dans le thunk
+    throw error;
   }
 };
 
@@ -42,7 +42,6 @@ export const logout = async () => {
       throw new Error(errorMessage || "Logout failed");
     }
   } catch (error) {
-    console.error("An error occurred during login:", error);
     throw error; // Propager l'erreur pour qu'elle soit capturée dans le thunk
   }
 };
