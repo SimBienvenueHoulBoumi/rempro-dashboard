@@ -1,5 +1,9 @@
+"use client";
+
 import localFont from "next/font/local";
 import "./globals.css";
+import { store } from "./store";
+import { Provider } from "react-redux";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -12,10 +16,10 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata = {
-  title: "rempro application UI",
-  icon: "/favicon.ico",
-};
+// export const metadata = {
+//   title: "rempro application UI",
+//   icon: "/favicon.ico",
+// };
 
 export default function RootLayout({
   children,
@@ -23,13 +27,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="light">
       <body suppressHydrationWarning>
-        <main
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          {children}
-        </main>
+        <Provider store={store}>
+          <main
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          >
+            {children}
+          </main>
+        </Provider>
       </body>
     </html>
   );
