@@ -17,12 +17,12 @@ export default function Login() {
 
     try {
       await login(data);
-
       toast.success("Heureux de vous revoir !");
 
       setTimeout(() => {
-        window.location.href = "/home"; // Rediriger vers la page home après 2 secondes
+        window.location.href = "/home";
       }, 2000);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       toast.error("Erreur lors de la connexion !");
     }

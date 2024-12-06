@@ -1,9 +1,7 @@
-"use client";
-
 import localFont from "next/font/local";
 import "./globals.css";
 
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const geistSans = localFont({
@@ -17,10 +15,10 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-// export const metadata = {
-//   title: "rempro application UI",
-//   icon: "/favicon.ico",
-// };
+export const metadata = {
+  title: "rempro UI",
+  icon: "/favicon.ico",
+};
 
 export default function RootLayout({
   children,
