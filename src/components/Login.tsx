@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { login, LoginType } from "@/services/authenticate";
+import { login, AuthType } from "@/services/authenticate";
 import { toast } from "react-toastify";
 
 export default function Login() {
@@ -10,7 +10,7 @@ export default function Login() {
 
   const onLoginSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data: LoginType = {
+    const data: AuthType = {
       username: email,
       password: password,
     };
