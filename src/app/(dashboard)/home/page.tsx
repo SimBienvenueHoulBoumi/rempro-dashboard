@@ -4,32 +4,12 @@ import React, { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import { all } from "@/services/followed";
 import Loader from "@/components/Loader";
-
-interface CardItem {
-  name: string;
-  levelType: string;
-  levelNumber: number;
-  episodeNumber: number;
-}
-
-const defineLevel = (level: string): string => {
-  switch (level) {
-    case "M":
-      return "Movie";
-    case "A":
-      return "Anime";
-    case "S":
-      return "Series";
-    case "W":
-      return "Webtoon";
-    default:
-      return "Unknown";
-  }
-};
+import AnimeList from "@/components/AnimeList";
+import { CardItemProps } from "@/types/card";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [data, setData] = useState<CardItem[]>([]);
+  const [data, setData] = useState<CardItemProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -94,25 +74,7 @@ export default function Home() {
             No items found.
           </div>
         ) : (
-          filteredData.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white shadow-md rounded-md p-4 border border-gray-200 transition-transform transform hover:scale-105"
-            >
-              <h3 className="text-lg font-semibold text-gray-800">
-                {item.name}
-              </h3>
-              <p className="text-sm text-gray-600">
-                <strong>Type: </strong> {defineLevel(item.levelType)}
-              </p>
-              <p className="text-sm text-gray-600">
-                <strong>Episode/Season: </strong>
-                <span>
-                  {item.levelNumber}/{item.episodeNumber}
-                </span>
-              </p>
-            </div>
-          ))
+          <AnimeList data={filteredData} />
         )}
       </div>
     </div>
